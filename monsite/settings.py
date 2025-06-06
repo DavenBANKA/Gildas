@@ -10,7 +10,7 @@ SECRET_KEY = 'r9809z_r=i5gat0vc-7chf!x*$q!qa%92*20mh!k8@n6u=v*#('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["gildaselectro.onrender.com"]
 
 # Application definition
 
