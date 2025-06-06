@@ -1,0 +1,40 @@
+<?php
+// submit_testimonial.php
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = strip_tags(trim($_POST['name'] ?? ''));
+    $message = strip_tags(trim($_POST['message'] ?? ''));
+
+    if ($name && $message) {
+        // Préparer la ligne à écrire
+        $entry = date('Y-m-d H:i:s') . " | " . htmlspecialchars($name) . " : " . htmlspecialchars($message) . PHP_EOL;
+
+        $file = __DIR__ . '/testimonials.txt';
+
+        // Écrire dans le fichier en mode ajout
+        if (file_put_contents($file, $entry, FILE_APPEND | LOCK_EX) !== false) {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'success',
+                'name' => htmlspecialchars($name),
+                'message' => htmlspecialchars($message)
+            ]);
+            exit;
+        } else {
+            header('Content-Type: application/json');
+            echo json_encode([
+                'status' => 'error',
+                'message' => 'Erreur lors de l\'enregistrement.'
+            ]);
+            exit;
+        }
+    } else {
+        header('Content-Type: application/json');
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Veuillez remplir tous les champs.'
+        ]);
+        exit;
+    }
+}
+?>

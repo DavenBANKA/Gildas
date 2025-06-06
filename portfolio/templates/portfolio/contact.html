@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <title>Contact - Gildas Ajamble</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Image de fond qui couvre toute la page */
+            background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            color: white;
+        }
+
+        body > *:not(footer) {
+            flex-shrink: 0;
+        }
+
+        main {
+            flex: 1 0 auto; /* occupe tout l'espace disponible */
+        }
+
+        /* Navbar semi-transparente pour voir le fond */
+        nav.navbar {
+            background-color: rgba(33, 37, 41, 0.85) !important;
+            backdrop-filter: saturate(180%) blur(10px);
+            -webkit-backdrop-filter: saturate(180%) blur(10px);
+        }
+
+        /* Container principal avec fond semi-transparent */
+        .content-wrapper {
+            max-width: 700px;
+            margin: 60px auto 40px;
+            background-color: rgba(0, 0, 0, 0.55);
+            padding: 40px 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 25px rgba(0,0,0,0.7);
+            text-align: center;
+        }
+
+        /* Footer fixé en bas */
+        footer {
+            background-color: rgba(33, 37, 41, 0.85);
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            flex-shrink: 0;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            backdrop-filter: saturate(180%) blur(10px);
+            -webkit-backdrop-filter: saturate(180%) blur(10px);
+        }
+
+        /* Liste contact stylée */
+        .contact-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 2rem;
+            text-align: left;
+        }
+        .contact-list li {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        .contact-list a {
+            color: #a8d0ff;
+            text-decoration: none;
+            margin-left: 0.5rem;
+        }
+        .contact-list a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            fill: currentColor;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Gildas Ajamble</a>
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/">Accueil</a></li>
+                <li class="nav-item"><a class="nav-link active" aria-current="page" href="/contact/">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<main>
+    <div class="content-wrapper" data-aos="fade-up" role="region" aria-label="Contact professionnel">
+        <h1>Contact professionnel</h1>
+        <p class="lead">Pour toute demande professionnelle, tu peux me contacter via :</p>
+
+        <ul class="contact-list mx-auto">
+            <li>
+                <svg class="icon text-info" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 2v.01L12 13 4 6.01V6h16zM4 18v-9.24l7.4 6.32a1 1 0 001.2 0L20 8.76V18H4z"/>
+                </svg>
+                <strong>Email :</strong>
+                <a href="mailto:gildasajamble@gmail.com">gildasajamble@gmail.com</a>
+            </li>
+
+            <li>
+                <svg class="icon text-warning" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.21 11.36 11.36 0 003.55.57 1 1 0 011 1v3.53a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.54a1 1 0 011 1 11.36 11.36 0 00.57 3.55 1 1 0 01-.21 1.11l-2.28 2.28z"/>
+                </svg>
+                <strong>Téléphone :</strong>
+                <a href="tel:+22893213363">+228 9321 3363</a>
+            </li>
+            <li>
+                <svg class="icon text-success" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M20.52 3.48A11.7 11.7 0 0012 1C6.21 1 1.5 5.71 1.5 11.5a10.94 10.94 0 001.7 5.58L1 23l6.16-2a10.85 10.85 0 005.84 1.74c5.79 0 10.5-4.71 10.5-10.5a11.68 11.68 0 00-3.82-8.76zm-7.43 15.64a8.76 8.76 0 01-4.73-1.37l-.34-.21-3.27 1 1-3.18-.22-.33a8.72 8.72 0 012.66-11.78 8.86 8.86 0 017.68-1.59 8.74 8.74 0 015.25 5.16 8.7 8.7 0 01-3.62 10.99 8.55 8.55 0 01-6.71 1.71z"/>
+                    <path d="M16.45 14.2l-1.25-.6a.82.82 0 00-1.02.21l-.5.62a8.51 8.51 0 01-2.65-2.43l.63-.52a.81.81 0 00.2-1l-1.17-1.92a.78.78 0 00-1.22-.21l-.58.6a4.42 4.42 0 00-1.4 3.5 5.07 5.07 0 005.69 4.7 4.37 4.37 0 003.01-1.29.79.79 0 00-.21-1.25z"/>
+                </svg>
+                <strong>WhatsApp :</strong>
+                <a href="https://wa.me/22897391292" target="_blank" rel="noopener noreferrer">+228 9739 1292</a>
+            </li>
+        </ul>
+    </div>
+</main>
+
+<footer>
+    &copy; 2025 Gildas Ajamble — Tous droits réservés
+</footer>
+
+<!-- Bootstrap JS bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- AOS Animation -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gildas Électricien - Accueil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Fond global avec texture légère */
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: url('https://www.transparenttextures.com/patterns/cubes.png') repeat;
+      background-color: #f4f4f4;
+      color: #212529;
+      min-height: 100vh;
+    }
+
+    /* HERO avec overlay dégradé */
+    .hero {
+      background:
+        linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url('https://images.unsplash.com/photo-1581093588401-1cc36787f877?auto=format&fit=crop&w=1470&q=80') no-repeat center center/cover;
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Garde la superposition mais pas besoin de ::before */
+    /* Enlève .hero::before */
+
+    .hero-content {
+      padding: 2rem;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.7);
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      text-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    }
+
+    .hero .btn {
+      font-size: 1.2rem;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      box-shadow: 0 4px 12px rgba(253,126,20,0.6);
+      transition: background-color 0.3s ease;
+    }
+
+    .hero .btn:hover {
+      background-color: #e06b00;
+      box-shadow: 0 6px 18px rgba(224,107,0,0.8);
+    }
+
+    .section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    /* Petite ligne décorative sous le titre */
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 60px;
+      height: 4px;
+      background-color: #fd7e14;
+      margin: 0.75rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* Cartes services avec ombre plus profonde et bord arrondi */
+    .service-card {
+      border-radius: 15px;
+      overflow: hidden;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px) scale(1.05);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    .service-card img {
+      border-top-left-radius: 15px;
+      border-top-right-radius: 15px;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.35s ease;
+    }
+
+    .service-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      color: #fd7e14;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    /* About Section */
+    #about p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    #about img {
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    #about img:hover {
+      transform: scale(1.03);
+    }
+
+    /* Testimonial style */
+    .testimonial {
+      background: linear-gradient(135deg, #fd7e14, #f06595);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      font-style: italic;
+      font-size: 1.3rem;
+      box-shadow: 0 12px 30px rgba(253,126,20,0.4);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Footer with gradient background */
+    footer {
+      background: linear-gradient(90deg, #111111, #fd7e14);
+      color: white;
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #fff3e0;
+      text-decoration: underline;
+      transition: color 0.3s ease;
+    }
+
+    footer a:hover {
+      color: #ffd27f;
+      text-decoration: none;
+    }
+
+    /* Navbar brand styling */
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.6rem;
+      letter-spacing: 1.2px;
+      color: #fd7e14 !important;
+    }
+
+    /* Navbar link active & hover */
+    .navbar-nav .nav-link {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #ddd !important;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+      color: #fd7e14 !important;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm">
+  <div class="container">
+    <a class="navbar-brand" href="#">Gildas Électricien</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Accueil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">À propos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-content">
+    <h1>Votre expert en électricité et plomberie à Lomé au TOGO</h1>
+    <p>Installations, rénovations, dépannages — Qualité et sécurité garanties</p>
+    <a href="#contact" class="btn btn-warning">Demander un devis</a>
+  </div>
+</header>
+
+<!-- SERVICES -->
+<section id="services" class="section bg-white">
+  <div class="container">
+    <h2 class="section-title">Nos Services</h2>
+
+    <!-- Carte 1 -->
+    <div class="card mb-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-start" alt="Travaux électriques">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Dépannage rapide</h5>
+            <p class="card-text">Intervention 24h/24 en cas de panne, court-circuit, coupure de courant ou problème d’installation.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 2 -->
+    <div class="card mb-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-start" alt="Tableau électrique">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Remplacement tableau</h5>
+            <p class="card-text">Modernisation de votre tableau électrique pour une meilleure sécurité et répartition de l’énergie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 3 -->
+    <div class="card mb-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-start" alt="Électricien au travail">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Maintenance préventive</h5>
+            <p class="card-text">Contrôle régulier de vos installations pour éviter toute panne ou dégradation non détectée.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carte 4 -->
+    <div class="card mb-4">
+      <div class="row g-0 align-items-center">
+        <div class="col-md-4">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-start" alt="Câblage et installation électrique">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title">Mise aux normes</h5>
+            <p class="card-text">Adaptation de votre installation aux dernières normes électriques en vigueur (NFC 15-100).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+
+<!-- ABOUT -->
+<section id="about" class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">À propos de nous</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" alt="Gildas Électricien" class="img-fluid" />
+      </div>
+      <div class="col-md-6">
+        <p>
+          Forts de plus de 5 ans d’expérience, nous intervenons rapidement et efficacement pour tous vos travaux électriques à Lyon et ses alentours. Notre équipe est certifiée, formée aux dernières normes et soucieuse de la sécurité de vos installations.
+        </p>
+        <p>
+          Nous mettons un point d’honneur à fournir un service personnalisé et des conseils adaptés à chaque projet.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="section bg-white">
+  <div class="container">
+    <h2 class="section-title">Témoignages</h2>
+    <div class="testimonial">
+      « Gildas Électricien a rénové toute l’électricité de notre maison avec professionnalisme et ponctualité. Travail impeccable et équipe très sympathique. »
+      <br><br><strong>– Marie Dupont, Lyon</strong>
+    </div>
+  </div>
+</section>
+<!-- Section pour ajouter un témoignage -->
+<section class="section bg-white">
+  <div class="container">
+    <h2 class="section-title">Laissez un témoignage</h2>
+    <form method="POST" action="save_testimonial.php" id="testimonialForm" class="mb-4">
+      <div class="mb-3">
+        <label for="testimonialName" class="form-label">Votre nom</label>
+        <input type="text" class="form-control" id="testimonialName" placeholder="Votre nom" required />
+      </div>
+      <div class="mb-3">
+        <label for="testimonialMessage" class="form-label">Votre témoignage</label>
+        <textarea class="form-control" id="testimonialMessage" rows="4" placeholder="Écrivez votre témoignage ici..." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-warning">Envoyer</button>
+    </form>
+
+
+    <div id="testimonialList">
+     <script>
+  const form = document.getElementById('testimonialForm');
+  const testimonialList = document.getElementById('testimonialList');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('testimonialName').value.trim();
+    const message = document.getElementById('testimonialMessage').value.trim();
+
+    if (name && message) {
+      // Crée un nouvel élément témoignage
+      const testimonialDiv = document.createElement('div');
+      testimonialDiv.classList.add('testimonial');
+      testimonialDiv.style.marginTop = '1.5rem';
+      testimonialDiv.innerHTML = `
+        “${message}”<br><br><strong>– ${name}</strong>
+      `;
+
+      // Ajoute en haut de la liste (tu peux aussi changer pour appendChild)
+      testimonialList.prepend(testimonialDiv);
+
+      // Reset form
+      form.reset();
+    }
+  }); </script>
+<script>
+  const form = document.getElementById('testimonialForm');
+  const testimonialList = document.getElementById('testimonialList');
+  const formResponse = document.getElementById('formResponse');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    fetch('submit_testimonial.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      // Vérifie que la réponse est au format JSON
+      if (!response.ok) {
+        throw new Error('Erreur HTTP ' + response.status);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Réponse serveur:', data); // Pour debug
+
+      if (data.status === 'success') {
+        // Crée et affiche le nouveau témoignage
+        const testimonialDiv = document.createElement('div');
+        testimonialDiv.classList.add('testimonial');
+        testimonialDiv.style.marginTop = '1.5rem';
+        testimonialDiv.innerHTML = `“${data.message}”<br><br><strong>– ${data.name}</strong>`;
+        testimonialList.prepend(testimonialDiv);
+
+        // Cache le formulaire
+        form.style.display = 'none';
+
+        // Message de confirmation
+        formResponse.textContent = "Merci pour votre témoignage !";
+        formResponse.style.color = "green";
+      } else {
+        // Affiche message d'erreur renvoyé par PHP
+        formResponse.textContent = data.message || "Erreur lors de l'envoi.";
+        formResponse.style.color = "red";
+      }
+    })
+    .catch(error => {
+      console.error('Erreur fetch:', error);
+      formResponse.textContent = "Erreur réseau, veuillez réessayer.";
+      formResponse.style.color = "red";
+    });
+  });
+</script>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- CONTACT -->
+<section id="contact" class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">Contactez-nous</h2>
+    <p class="text-center mb-4">Pour un devis ou toute question, n’hésitez pas à nous joindre :</p>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+       <form action="{% url 'contact' %}" method="POST">
+         {% csrf_token %}
+          <div class="mb-3">
+            <label for="name" class="form-label">Nom</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required />
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Adresse e-mail</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Votre e-mail" required />
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea class="form-control" id="message" name="message" rows="5" placeholder="Votre message" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-warning w-100">Envoyer</button>
+        </form>
+
+        <!-- Contacts horizontaux avec logos en couleur -->
+    <div class="d-flex justify-content-center gap-3 mt-4 align-items-center">
+  <a href="mailto:gildasajamble.com" class="text-decoration-none d-flex align-items-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="28" height="28" />
+  </a>
+  <a href="tel:+22893213363" class="text-decoration-none d-flex align-items-center">
+    <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Téléphone" width="28" height="28" />
+  </a>
+  <a href="https://wa.me/22893213363" target="_blank" class="text-decoration-none d-flex align-items-center">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="28" height="28" />
+  </a>
+  <a href="https://www.tiktok.com/@70137355g" target="_blank" class="text-decoration-none d-flex align-items-center">
+  <img src="https://cdn-icons-png.flaticon.com/512/3046/3046120.png" alt="TikTok" width="32" height="32" />
+</a>
+      <a href="https://www.instagram.com/gildasstar" target="_blank" class="text-decoration-none d-flex align-items-center">
+  <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" width="32" height="32" />
+</a>
+
+
+</div>
+
+
+
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2025 Gildas Électricien — Tous droits réservés | <a href="#">Mentions légales</a><br>
+  <a>by @davenbanka</a>
+</footer>
+
+<!-- Bootstrap JS Bundle -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
